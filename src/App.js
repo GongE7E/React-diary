@@ -1,7 +1,13 @@
 import './App.css';
+import { getEmotionImgById } from './utils/emotionFunction';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  return <div>start</div>;
+  return (
+    <div className='App'>
+      <Outlet />
+    </div>
+  );
 }
 
 export default App;
