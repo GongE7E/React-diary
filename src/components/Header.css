@@ -1,0 +1,23 @@
+header{
+    display: flex;
+    align-items: center;
+    padding-top:20px;
+    padding-bottom:20px;
+    border-bottom: 1px solid #e2e2e2;
+   
+}
+.header-left{
+    width: 25%;
+    justify-content:first;
+}
+
+.header-title{
+    width: 50%;
+    font-size: 25px;
+    justify-content: center;
+}
+
+.header-right{
+    width: 25%;
+    justify-content: end;
+}
