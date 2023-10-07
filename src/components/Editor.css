@@ -33,3 +33,9 @@ textarea::placeholder{
    justify-content: space-between;
    align-items:center;
 }
+.emotions-emotion-list{
+    display: flex;
+   justify-content: space-around;
+   gap:2%;
+   
+}
