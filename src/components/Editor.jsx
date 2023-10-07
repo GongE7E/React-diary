@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './Button';
+import './Editor.css';
 import { emotions } from '../utils/emotions';
 import EmotionItem from './EmotionItem';
 
@@ -26,13 +27,11 @@ export default function Editor({ onsubmit }) {
   return (
     <div className='Editor'>
       <section className='editor-date'>
-        <h4>Today's Date</h4>
-        <div>
-          <input type='date' value={state.date} onChange={handleChangeDate} />
-        </div>
+        <h4 className='editor-title'>Today's Date</h4>
+        <input type='date' value={state.date} onChange={handleChangeDate} />
       </section>
       <section className='editor-emotions'>
-        <h4>emotion</h4>
+        <h4 className='editor-title'>emotion</h4>
         <ul className='emotions-emotion-list'>
           {emotions.map((emotion) => (
             <EmotionItem
@@ -45,7 +44,7 @@ export default function Editor({ onsubmit }) {
         </ul>
       </section>
       <section className='editor-content'>
-        <h4>diary content</h4>
+        <h4 className='editor-title'>diary content</h4>
         <textarea
           placeholder='당신의 오늘 하루는 어땠나요? '
           value={state.content}
