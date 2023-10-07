@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 export default function Home() {
   return (
-    <div>
+    <>
       <Header
         title={'Home'}
         leftChild={
@@ -15,12 +15,12 @@ export default function Home() {
         }
         rightChild={
           <Button
-            text={'positive'}
-            onClick={() => alert('positive')}
-            type={'positive'}
+            text={'default'}
+            onClick={() => alert('default')}
+            type={'default'}
           />
         }
       />
-    </div>
+    </>
   );
 }
