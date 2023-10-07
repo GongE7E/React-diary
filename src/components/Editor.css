@@ -1,0 +1,35 @@
+.Editor > section{
+    margin-bottom: 40px;
+}
+.editor-title{
+    font-size: 22px;
+    font-weight:bold;
+}
+/* editor input, textarea 를 위한 좋은 className이 없을까? */
+.editor-date > input,textarea{
+border: none;
+border-radius: var(--size-border);
+background-color: var(--color-gray);
+padding: var(--size-padding);
+font-size: 18px;
+font-family: 'Nanum Pen Script';
+}
+.editor-date > input{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+textarea{
+    width: 100%;
+    min-height: 200px;
+    align-items: center;
+}
+textarea::placeholder{
+    text-align: center;
+    padding-top: 50px;
+    font-size: 30px;
+}
+.editor-bottom-btn{
+    display: flex;
+   justify-content: space-between;
+   align-items:center;
+}
