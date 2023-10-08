@@ -4,6 +4,7 @@
   /*-- main-color --*/
   --color-gray:#ececec;
   --color-border:#e2e2e2;
+  --color-bg:#f6f6f6;
   /*-- btn-color --*/
   --color-btn-default:gray;
   --color-btn-text:white;
@@ -15,16 +16,27 @@
 }
 *{
   box-sizing:border-box;
+
+}
+#root{
+  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  box-shadow: rgba(100, 100, 100, 0.2) 0px 7px 29px 0px;
+  background-color:white;
 }
 body {
   margin: 0;
-  width: 100vw;
-  height: 100vh;
-  /* font-family: 'Nanum Pen Script', cursive; */
+  height: 100%;
+  font-family: 'Nanum Pen Script', cursive;
+  background-color:var(--color-bg);
+  display: flex;
+  justify-content: center;
   /* font-family: 'Yeon Sung', cursive; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 code {
@@ -37,4 +49,7 @@ button{
 }
 li{
   list-style: none;
+}
+ul{
+  padding: 0;
 }
