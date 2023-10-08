@@ -1,0 +1,22 @@
+.diaryList .menu_wrapper{
+    margin-top:20px;
+    margin-bottom:30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left_col select{
+    margin-right: 10px;
+    border:none;
+    border-radius: var(--size-border);
+    background-color:var(--color-gray);
+    padding:10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+}
+.right_col {
+    flex-grow: 1;
+}
+.right_col button {
+    width: 100%;
+}
