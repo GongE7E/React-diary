@@ -34,25 +34,25 @@ function App() {
   const MockData = [
     {
       id: 'mock1',
-      data: new Date().getTime(),
+      date: new Date().getTime(),
       content: 'mock1',
       emotionId: 1,
     },
     {
       id: 'mock2',
-      data: new Date().getTime(),
+      date: new Date().getTime(),
       content: 'mock2',
       emotionId: 2,
     },
     {
       id: 'mock3',
-      data: new Date().getTime(),
+      date: new Date().getTime(),
       content: 'mock3',
       emotionId: 3,
     },
     {
       id: 'mock4',
-      data: new Date().getTime(),
+      date: new Date().getTime(),
       content: 'mock5',
       emotionId: 4,
     },
