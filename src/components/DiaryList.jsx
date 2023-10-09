@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import './DiaryList.css';
 import { useNavigate } from 'react-router-dom';
-
+import DiaryItem from './DiaryItem';
 const sortOptionList = [
   {
     value: 'latest',
@@ -11,9 +11,14 @@ const sortOptionList = [
   { value: 'oldest', name: '오래된순' },
 ];
 
-export default function DiaryList() {
+export default function DiaryList({ data }) {
   const [sortType, setSortType] = useState('latest');
+  const [sortedData, setSortedData] = useState([]);
   const navigate = useNavigate();
+  useEffect(() => {
+    const list = JSON.parse(JSON.stringify(data));
+    setSortedData(list);
+  }, [data]);
   return (
     <div className='diaryList'>
       <div className='menu_wrapper'>
@@ -33,6 +38,11 @@ export default function DiaryList() {
             text={'새 일기쓰기'}
             onClick={() => navigate('/new')}
           />
+        </div>
+        <div className='list_wrapper'>
+          {sortedData.map((item) => (
+            <DiaryItem key={item.id} item={item} />
+          ))}
         </div>
       </div>
     </div>
