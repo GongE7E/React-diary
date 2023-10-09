@@ -26,11 +26,11 @@ const router = createBrowserRouter([
     element: <New />,
   },
   {
-    path: '/diary/:diaryId',
+    path: '/diary/:id',
     element: <Diary />,
   },
   {
-    path: '/edit',
+    path: '/edit:id',
     element: <Edit />,
   },
 ]);
