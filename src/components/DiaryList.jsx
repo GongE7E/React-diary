@@ -39,11 +39,11 @@ export default function DiaryList({ data }) {
             onClick={() => navigate('/new')}
           />
         </div>
-        <div className='list_wrapper'>
-          {sortedData.map((item) => (
-            <DiaryItem key={item.id} item={item} />
-          ))}
-        </div>
+      </div>
+      <div className='list_wrapper'>
+        {sortedData.map((item) => (
+          <DiaryItem key={item.id} item={item} />
+        ))}
       </div>
     </div>
   );
