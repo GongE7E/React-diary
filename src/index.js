@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     element: <Diary />,
   },
   {
-    path: '/edit:id',
+    path: '/edit/:id',
     element: <Edit />,
   },
 ]);
