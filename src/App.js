@@ -2,6 +2,7 @@ import { createContext, useEffect, useReducer, useRef, useState } from 'react';
 import './App.css';
 import { getEmotionImgById } from './utils/emotionFunction';
 import { Outlet } from 'react-router-dom';
+import React from 'react';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -17,7 +18,7 @@ function reducer(state, action) {
       );
     }
     case 'delete': {
-      return state.filter((list) => list.id !== action.targetId);
+      return state.filter((list) => list.id !== action.data.id);
     }
 
     default: {
@@ -29,6 +30,7 @@ export const DiaryStateContext = createContext();
 export const DiaryDispatchContext = createContext();
 
 function App() {
+  const idRef = useRef(0);
   const [data, dispatch] = useReducer(reducer, []);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const MockData = [
@@ -53,7 +55,7 @@ function App() {
     {
       id: 'mock4',
       date: new Date().getTime(),
-      content: 'mock5',
+      content: 'mock4',
       emotionId: 4,
     },
   ];
@@ -62,12 +64,13 @@ function App() {
     dispatch({
       type: 'create',
       data: {
-        id: getId(),
+        id: idRef.current,
         date: new Date(date).getTime(),
         content,
         emotionId,
       },
     });
+    idRef.current += 1;
   };
   const onUpdate = (targetId, date, content, emotionId) => {
     dispatch({
@@ -109,13 +112,6 @@ function App() {
       </DiaryStateContext.Provider>
     );
   }
-}
-
-// const idRef = useRef();
-
-function getId() {
-  let id: 0;
-  id++;
 }
 
 export default App;
