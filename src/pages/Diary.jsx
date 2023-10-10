@@ -4,7 +4,7 @@ import useDiary from '../hooks/useDiary';
 import getFormattedDate from '../utils/getFormattedDate';
 import Header from '../components/Header';
 import Button from '../components/Button';
-
+import Viewer from '../components/Viewer';
 export default function Diary() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -12,7 +12,7 @@ export default function Diary() {
   if (!data) {
     return <div>Loading...</div>;
   } else {
-    const { date } = data;
+    const { date, content, emotionId } = data;
     return (
       <>
         <Header
@@ -27,6 +27,7 @@ export default function Diary() {
             />
           }
         />
+        <Viewer emotionId={emotionId} content={content} />
       </>
     );
   }
