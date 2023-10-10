@@ -45,7 +45,7 @@
     color:white;
 }
 /* 콘텐츠 섹션*/
-.content_wrapper{
+.ly_viewer .content_wrapper{
     width: 100%;
     background-color:var(--color-gray);
     border-radius:5px;
