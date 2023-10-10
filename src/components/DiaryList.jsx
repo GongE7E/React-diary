@@ -16,9 +16,18 @@ export default function DiaryList({ data }) {
   const [sortedData, setSortedData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
+    const compare = (a, b) => {
+      if (sortType === 'latest') {
+        return Number(a.date) - Number(b.date);
+      } else {
+        return Number(b.date) - Number(a.date);
+      }
+    };
     const list = JSON.parse(JSON.stringify(data));
+    list.sort(compare);
     setSortedData(list);
-  }, [data]);
+  }, [sortType, data]);
+
   return (
     <div className='diaryList'>
       <div className='menu_wrapper'>
