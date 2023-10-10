@@ -19,19 +19,19 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      {
+        path: '/new',
+        element: <New />,
+      },
+      {
+        path: '/diary/:id',
+        element: <Diary />,
+      },
+      {
+        path: '/edit/:id',
+        element: <Edit />,
+      },
     ],
-  },
-  {
-    path: '/new',
-    element: <New />,
-  },
-  {
-    path: '/diary/:id',
-    element: <Diary />,
-  },
-  {
-    path: '/edit/:id',
-    element: <Edit />,
   },
 ]);
 
