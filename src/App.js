@@ -14,7 +14,7 @@ function reducer(state, action) {
     }
     case 'update': {
       return state.map((list) =>
-        list.id === action.data.id ? { ...action.id } : list
+        list.id === action.data.id ? { ...action.data } : list
       );
     }
     case 'delete': {

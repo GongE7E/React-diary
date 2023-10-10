@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 import './Editor.css';
 import { emotions } from '../utils/emotions';
 import EmotionItem from './EmotionItem';
+import getFormattedDate from '../utils/getFormattedDate';
 
-export default function Editor({ onsubmit }) {
+export default function Editor({ initData, onsubmit }) {
   const [state, setState] = useState({
-    date: '',
+    date: getFormattedDate(new Date()),
     emotionId: 3,
     content: '',
   });
+  useEffect(() => {
+    if (initData) {
+      setState({
+        ...initData,
+        date: getFormattedDate(new Date(parseInt(initData.date))),
+      });
+    }
+    // console.log(initData);
+  }, [initData]);
+
   const handleChangeDate = (e) => {
     setState({ ...state, date: e.target.value });
   };
