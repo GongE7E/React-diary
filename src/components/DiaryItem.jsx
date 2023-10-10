@@ -19,7 +19,7 @@ export default function DiaryItem({ item }) {
         <div className='data_wrapper' onClick={() => navigate(`diary/${id}`)}>
           {new Date(parseInt(date)).toLocaleDateString()}
         </div>
-        <div className='content_wrapper'>{content}</div>
+        <div className='content_wrapper'>{content.slice(0, 5)}</div>
       </div>
       <div className='button_section'>
         <Button text={'수정하기'} onClick={() => navigate(`/edit/${id}`)} />
