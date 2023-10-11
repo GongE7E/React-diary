@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './EmotionItem.css';
 
-export default function EmotionItem({ onClick, emotion, isSelected }) {
+const emotionItem = memo(function EmotionItem({
+  onClick,
+  emotion,
+  isSelected,
+}) {
   const { id, img, name } = emotion;
   return (
     <li
@@ -15,4 +19,5 @@ export default function EmotionItem({ onClick, emotion, isSelected }) {
       <span className='emotion-name'>{name}</span>
     </li>
   );
-}
+});
+export default emotionItem;
