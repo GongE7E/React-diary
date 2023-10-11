@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './DiaryItem.css';
 import { getEmotionImgById } from '../utils/emotionFunction';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 
-export default function DiaryItem({ item }) {
+const diaryItem = memo(function DiaryItem({ item }) {
   const { content, emotionId, date, id } = item;
   const navigate = useNavigate();
   return (
@@ -26,4 +26,5 @@ export default function DiaryItem({ item }) {
       </div>
     </div>
   );
-}
+});
+export default diaryItem;
