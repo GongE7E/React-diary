@@ -10,8 +10,8 @@ export default function New() {
   const { onCreate } = useContext(DiaryDispatchContext);
 
   const handleSubmit = (data) => {
-    const { date, content, emotionId } = data;
-    onCreate(date, content, emotionId);
+    const { id, date, content, emotionId } = data;
+    onCreate(id, date, content, emotionId);
     navigate('/', { replace: true });
   };
   return (
