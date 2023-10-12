@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer, useRef, useState } from 'react';
 import './App.css';
-import { getEmotionImgById } from './utils/emotionFunction';
+
 import { Outlet } from 'react-router-dom';
 import React from 'react';
 
@@ -10,15 +10,24 @@ function reducer(state, action) {
       return action.data;
     }
     case 'create': {
-      return [action.data, ...state];
+      const newState = [action.data, ...state];
+      localStorage.setItem('diary', JSON.stringify(newState));
+
+      return newState;
     }
     case 'update': {
-      return state.map((list) =>
-        list.id === action.data.id ? { ...action.data } : list
+      const newState = state.map((list) =>
+        String(list.id) === String(action.data.id) ? { ...action.data } : list
       );
+      localStorage.setItem('diary', JSON.stringify(newState));
+      return newState;
     }
     case 'delete': {
-      return state.filter((list) => list.id !== action.data.id);
+      const newState = state.filter(
+        (list) => String(list.id) !== String(action.data.id)
+      );
+      localStorage.setItem('diary', JSON.stringify(newState));
+      return newState;
     }
 
     default: {
@@ -33,34 +42,8 @@ function App() {
   const idRef = useRef(0);
   const [data, dispatch] = useReducer(reducer, []);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const MockData = [
-    {
-      id: 'mock1',
-      date: new Date().getTime(),
-      content: 'mock1',
-      emotionId: 1,
-    },
-    {
-      id: 'mock2',
-      date: new Date().getTime(),
-      content: 'mock2',
-      emotionId: 2,
-    },
-    {
-      id: 'mock3',
-      date: new Date().getTime(),
-      content: 'mock3',
-      emotionId: 3,
-    },
-    {
-      id: 'mock4',
-      date: new Date().getTime(),
-      content: 'mock4',
-      emotionId: 4,
-    },
-  ];
 
-  const onCreate = (date, content, emotionId) => {
+  const onCreate = (id, date, content, emotionId) => {
     dispatch({
       type: 'create',
       data: {
@@ -92,10 +75,20 @@ function App() {
     });
   };
   useEffect(() => {
-    dispatch({
-      type: 'init',
-      data: MockData,
-    });
+    const rawData = localStorage.getItem('diary');
+
+    if (!rawData) {
+      setIsDataLoaded(true);
+      return;
+    }
+    const localData = JSON.parse(rawData);
+    if (localData.length === 0) {
+      setIsDataLoaded(true);
+      return;
+    }
+    localData.sort((a, b) => Number(b.id) - Number(a.id));
+    idRef.current = localData[0].id + 1;
+    dispatch({ type: 'init', data: localData });
     setIsDataLoaded(true);
   }, []);
 
