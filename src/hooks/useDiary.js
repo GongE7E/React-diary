@@ -9,7 +9,10 @@ export default function useDiary(id) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const matchDiary = data.find((element) => element.id === id);
+    const matchDiary = data.find(
+      (element) => String(element.id) === String(id)
+    );
+
     if (matchDiary) {
       setDiary(matchDiary);
     } else {
