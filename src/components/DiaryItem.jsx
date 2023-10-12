@@ -16,7 +16,7 @@ const diaryItem = memo(function DiaryItem({ item }) {
         <img src={getEmotionImgById(emotionId)} alt={emotionId} />
       </div>
       <div className='info_section'>
-        <div className='data_wrapper' onClick={() => navigate(`diary/${id}`)}>
+        <div className='data_wrapper' onClick={() => navigate(`/diary/${id}`)}>
           {new Date(parseInt(date)).toLocaleDateString()}
         </div>
         <div className='content_wrapper'>{content.slice(0, 5)}</div>
